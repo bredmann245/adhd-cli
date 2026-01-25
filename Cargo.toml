@@ -1,0 +1,21 @@
+[package]
+name = "adhd"
+version = "0.1.0"
+edition = "2021"
+
+# Dependencies: external crates (libraries) that our project uses
+[dependencies]
+# clap: Makes it easy to parse command-line arguments
+clap = { version = "4.4", features = ["derive"] }
+
+# reqwest: HTTP client for making API requests to OpenAI
+reqwest = { version = "0.11", features = ["json"] }
+
+# tokio: Async runtime (required for async/await with reqwest)
+tokio = { version = "1.35", features = ["full"] }
+
+# serde: Serialize and deserialize data (JSON)
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+async-openai = { version = "0.32.3", features = ["chat-completion", "byot"] }
+dotenv = "0.15.0"
