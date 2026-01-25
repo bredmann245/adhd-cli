@@ -64,3 +64,13 @@ The main source file contains:
 - Add more OpenAI API functionality (chat completions, etc.)
 - Save API key to a config file instead of passing it each time
 - Add more CLI commands and options
+
+# Installing via cURL and Invoke-WebRequest (iwr)
+```ps1
+Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/bredmann245/adhd-cli/master/install.ps1 | Invoke-Expression
+```
+
+```bash
+curl -fsSL https://raw.githubusercontent.com/bredmann245/adhd-cli/main/install.sh | sh
+
+```
