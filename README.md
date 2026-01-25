@@ -72,5 +72,4 @@ Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/bredmann245
 
 ```bash
 curl -fsSL https://raw.githubusercontent.com/bredmann245/adhd-cli/main/install.sh | sh
-
 ```
