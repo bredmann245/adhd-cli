@@ -1,0 +1,55 @@
+name: Release
+
+on:
+  push:
+    tags:
+      - "v*"
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-release:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - os: ubuntu-latest
+            artifact: adhd-Linux.tar.gz
+            bin: adhd
+          - os: macos-latest
+            artifact: adhd-macOS.tar.gz
+            bin: adhd
+          - os: windows-latest
+            artifact: adhd-Windows.zip
+            bin: adhd.exe
+
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: dtolnay/rust-toolchain@stable
+
+      - name: Build (release)
+        run: cargo build --release
+
+      - name: Package (Linux/macOS)
+        if: runner.os != 'Windows'
+        shell: bash
+        run: |
+          set -euo pipefail
+          cd target/release
+          tar -czf ../../${{ matrix.artifact }} ${{ matrix.bin }}
+
+      - name: Package (Windows)
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          Compress-Archive -Path "target\release\${{ matrix.bin }}" -DestinationPath "${{ matrix.artifact }}" -Force
+
+      - name: Create/Update GitHub Release and upload assets
+        uses: softprops/action-gh-release@v1
+        with:
+          files: |
+            ${{ matrix.artifact }}
