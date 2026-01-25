@@ -1,75 +1,46 @@
 # ADHD CLI Tool
 
-A simple, beginner-friendly Rust CLI tool that connects to OpenAI.
+A simple CLI tool that connects to OpenAI to help keep you inspired and focused.
 
-## Prerequisites
+## Installation
 
-You need to install Rust first. Visit [rustup.rs](https://rustup.rs/) and follow the installation instructions.
-
-## Building the Project
-
-```bash
-# Build the project
-cargo build
-
-# Build for release (optimized, faster)
-cargo build --release
-```
-
-## Running the Tool
-
-```bash
-# Show help
-cargo run -- --help
-
-# Connect to OpenAI with your API key
-cargo run -- --open-ai-key sk-your-api-key-here
-```
-
-## Project Structure
-
-```
-adhd/
-├── Cargo.toml       # Project configuration and dependencies
-├── src/
-│   └── main.rs      # Main source code
-└── README.md        # This file
-```
-
-## Understanding the Code
-
-### Cargo.toml
-This file defines your project and its dependencies:
-- `clap`: For parsing command-line arguments
-- `reqwest`: For making HTTP requests to OpenAI
-- `tokio`: For async/await support
-- `serde`: For working with JSON data
-
-### main.rs
-The main source file contains:
-- **CLI struct**: Defines what arguments the program accepts
-- **main()**: The entry point that parses arguments and handles logic
-- **connect_to_openai()**: Tests the API connection by listing available models
-
-## Key Rust Concepts Used
-
-1. **Structs**: `Cli` is a struct that holds our command-line arguments
-2. **Enums**: `Option<String>` can be either `Some(value)` or `None`
-3. **Pattern Matching**: The `match` keyword handles different cases
-4. **Async/Await**: Used for non-blocking API calls
-5. **Error Handling**: `Result<T, E>` for operations that can fail
-
-## Next Steps
-
-- Add more OpenAI API functionality (chat completions, etc.)
-- Save API key to a config file instead of passing it each time
-- Add more CLI commands and options
-
-# Installing via cURL and Invoke-WebRequest (iwr)
+### Windows (PowerShell)
 ```ps1
 Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/bredmann245/adhd-cli/master/install.ps1 | Invoke-Expression
 ```
 
+### Linux/Mac (Bash)
 ```bash
 curl -fsSL https://raw.githubusercontent.com/bredmann245/adhd-cli/main/install.sh | sh
 ```
+
+## Configuration
+
+Before using the tool, you need to set up your OpenAI API key. Create a `.env` file in the same directory as the executable or set the environment variable:
+
+```bash
+# Create .env file with your API key
+OPENAI_API_KEY=sk-your-api-key-here
+```
+
+## Usage
+
+```bash
+# Get inspiration
+adhd --inspire
+
+# Show help
+adhd --help
+```
+
+## Getting an OpenAI API Key
+
+1. Visit [platform.openai.com](https://platform.openai.com/)
+2. Sign up or log in
+3. Navigate to API keys section
+4. Create a new API key
+5. Copy it to your `.env` file
+
+## Development 
+
+This is still in its very early stages of development. Much more to come! 
