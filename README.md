@@ -11,7 +11,7 @@ Invoke-WebRequest -UseBasicParsing https://raw.githubusercontent.com/bredmann245
 
 ### Linux/Mac (Bash)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/bredmann245/adhd-cli/main/install.sh | sh
+curl -fsSL https://raw.githubusercontent.com/bredmann245/adhd-cli/master/install.sh | sh
 ```
 
 ## Configuration
